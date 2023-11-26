@@ -1,7 +1,10 @@
 import React from "react";
 import { MdPostAdd } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { modalFunc } from "../redux/modalSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   return (
     <div className="flex items-center p-5  justify-between bg-indigo-600 text-white">
       <div className="text-3xl font-semibold">React App</div>
@@ -13,10 +16,17 @@ const Header = () => {
           </select>
         </div>
         <div>
-          <input className="bg-gray-200 rounded-md p-2 outline-none" type="text" placeholder="Arama yapınız.." />
+          <input
+            className="bg-gray-200 rounded-md p-2 outline-none"
+            type="text"
+            placeholder="Arama yapınız.."
+          />
         </div>
-        <div>
-        <MdPostAdd size={24} className="bg-indigo-800 w-10 rounded-full h-10 flex items-center justify-center cursor-pointer" />
+        <div
+          onClick={() => dispatch(modalFunc())}
+          className="bg-indigo-800 w-10 rounded-full h-10 flex items-center justify-center cursor-pointer"
+        >
+          <MdPostAdd size={24} />
         </div>
       </div>
     </div>
